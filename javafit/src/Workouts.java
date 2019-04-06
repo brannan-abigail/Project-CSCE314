@@ -21,20 +21,76 @@ public class Workouts {
 	private class Workout {
 	  private String name;
 	  private Equipment equipment;
-		private Muscle primaryMuscle;
-		private Muscle secondaryMuscle;
-		private String desc;
-		private String reminders;
+	  private Muscle primaryMuscle;
+	  private Muscle secondaryMuscle;
+	  private String desc;
+	  private String reminders;
 	
     Workout(String name, Equipment equipment, Muscle primaryMuscle, Muscle secondaryMuscle, String desc, String reminders) {
     }
 		
+    String getName() {
+    	return name;
+    }
+    
+    void setName(String name) {
+    	this.name = name;
+    }
+    
+    
+    //Enumeration -> Modify?
+    Equipment getEquipment() {
+    	return equipment;
+    }
+    
+    //Enumeration -> Modify?
+    void setEquipment(Equipment equipment) {
+    	this.equipment = equipment;
+    }
+    
+    //Enumeration -> Modify?
+    Muscle getPrimaryMuscle() {
+    	return primaryMuscle;
+    }
+    
+    //Enumeration -> Modify?
+    void setPrimaryMuscle(Muscle primaryMuscle) {
+    	this.primaryMuscle = primaryMuscle;
+    }
+    
+    //Enumeration -> Modify?
+    Muscle getSecondaryMuscle() { 
+    	return secondaryMuscle;
+    }
+    
+    //Enumeration -> Modify?
+    void setSecondaryMuscle(Muscle secondaryMuscle) { 
+    	this.secondaryMuscle = secondaryMuscle;
+    }
+    
+    String getDesc() {
+    	return desc;
+    }
+    
+   void setDesc(String desc) {
+	   this.desc = desc;
+   }
+   
+   String getReminders() {
+	   return reminders;
+   }
+   
+   void setReminders(String reminders) {
+	   this.reminders = reminders;
+   }
+    
     // How do we get the name of an enumeration value?
 	}
 	
   // This function adds a new workout to the Workouts object.
   public final void addWorkout(String name, Equipment equipment, Muscle primaryMuscle, Muscle secondaryMuscle, String desc, String reminders)
   {
+	 
   }
   
   // This function adds a workout to the Workouts object.
