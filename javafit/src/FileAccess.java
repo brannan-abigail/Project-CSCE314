@@ -5,6 +5,7 @@ public class FileAccess {
   public static Workouts loadWorkouts() {
     // What is a try/catch block and why do we need one?
     // What is an exception?
+	  return new Workouts();
   }
 
 }
