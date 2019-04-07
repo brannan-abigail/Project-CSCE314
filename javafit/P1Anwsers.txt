@@ -29,3 +29,5 @@ Workouts.java Questions:
 	What is short-circuit evaluation?
 
 	Short-circuit evaluation refers to how the semantics in some programming languages handle multiple arguments, in which the arguments after the first one are only checked if the first one did not work. So in Java for booleans like AND and OR, if the first condition isn't met, it won't check the second one. 
+
+Test
