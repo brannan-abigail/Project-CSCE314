@@ -1,0 +1,31 @@
+FileAccess.java Questions:
+
+	What is a try/catch block and why do we need one?
+
+	A try/catch block is a block of code for handling things that could go wrong in your code, but should not cause your entire program to crash. It has a portion called the "try block" that is for trying things that could fail, and the "catch block" for what the program should do if the attempt fails. An example of this would be in having the try section attempt to connect to a database, and the catch section report to the user if the connection could not be made. 
+
+	What is an exception?
+
+	An exception is an unexpected event that happens in your program if it isn't working ideally but not badly enough that it needs to completely break. In Java, exceptions are objects for these unexpected events that are passed to the catch block for handling in try-catch blocks. There are some standard exceptions, such as IOException, but custom exceptions can be created as well. These non-fatal errors can be logged in a log file, and/or handled in some way in your catch block. In the example of an attempted database connection attempt, one could have any other steps that need the database information not occur.
+
+Workouts.java Questions:
+
+	We choose ArrayList over Vector because...?
+
+	it is more space and time efficent, making them the better choice over vectors because in Java when not using threads. Both are dynamically allocated, which means they change size when you do an action on the data structure that changes its size, but ArrayLists are more space-efficient. This is because as when they is resized, it grows in size by half the size instead of by double the size. 
+
+	Why didn't I have to declare the Muscle enumeration as static?
+
+	Enumeration is a special data type for a set of predefined constants, with each attribute being the constants. These are accessed with a static values method, so they don't need to be declared as static.
+
+	Why do we use a nested class?
+
+	Nested classes are useful if only the outside class uses it because it's a logical set-up for items of a set. It also allows the outer class to access a private inner class without other classes being able to access the data members. 
+
+	How do we get the name of an enumeration value?
+
+	An accessor is needed to get the name of an enumeration value with the enumeration object passed in.
+
+	What is short-circuit evaluation?
+
+	Short-circuit evaluation refers to how the semantics in some programming languages handle multiple arguments, in which the arguments after the first one are only checked if the first one did not work. So in Java for booleans like AND and OR, if the first condition isn't met, it won't check the second one. 
