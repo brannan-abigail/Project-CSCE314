@@ -14,7 +14,8 @@ public class Workouts {
   public enum Muscle {ABS, BACK, BICEPS, CHEST, FOREARM, GLUTES, LOWERLEG, SHOULDER, TRICEPS, UPPERLEG, NONE} // Why didn't I have to declare this static?
   public enum Equipment {BARBELL, BODYWEIGHT, DUMBBELL, CABLE, HAMMERSTRENGTH}
 	private final ArrayList<Workout> workoutList = new ArrayList<Workout>();
-
+	
+	
 	// This is a nested class, also known as an inner class. Why do we use a nested class?
 	// You will need to create a number of methods for the inner class. You are not limited to 
 	// only the methods listed inside this class.
@@ -27,25 +28,26 @@ public class Workouts {
 	  private String reminders;
 	
     Workout(String name, Equipment equipment, Muscle primaryMuscle, Muscle secondaryMuscle, String desc, String reminders) {
+    	this.name = name;
+    	this.equipment = equipment;
+    	this.primaryMuscle = primaryMuscle;
+    	this.secondaryMuscle = secondaryMuscle;
+    	this.desc = desc;
+    	this.reminders = reminders;
     }
 		
     String getName() {
     	return name;
     }
-    
-    void setName(String name) {
-    	this.name = name;
-    }
-    
-    
+      
     //Enumeration -> Modify?
     Equipment getEquipment() {
     	return equipment;
     }
     
     //Enumeration -> Modify?
-    void setEquipment(Equipment equipment) {
-    	this.equipment = equipment;
+    public void setStringToEquipment(String equipmentString) {
+    	this.equipment = equipment.valueOf(equipmentString);
     }
     
     //Enumeration -> Modify?
@@ -71,17 +73,9 @@ public class Workouts {
     String getDesc() {
     	return desc;
     }
-    
-   void setDesc(String desc) {
-	   this.desc = desc;
-   }
    
    String getReminders() {
 	   return reminders;
-   }
-   
-   void setReminders(String reminders) {
-	   this.reminders = reminders;
    }
     
     // How do we get the name of an enumeration value?
@@ -90,12 +84,14 @@ public class Workouts {
   // This function adds a new workout to the Workouts object.
   public final void addWorkout(String name, Equipment equipment, Muscle primaryMuscle, Muscle secondaryMuscle, String desc, String reminders)
   {
-	 
+	 Workout newWorkout = new Workout(name, equipment, primaryMuscle, secondaryMuscle, desc,  reminders);
+	 workoutList.add(newWorkout);
   }
   
   // This function adds a workout to the Workouts object.
   public final void addWorkout(Workout workout)
   {
+	  workoutList.add(workout);
   }
   
   // This list returns a new Workouts object that contains only the workouts that contain the
@@ -105,14 +101,28 @@ public class Workouts {
 	public final Workouts getWorkoutsByMuscle(Muscle m, boolean includeSecondary)
 	{
 	  // What is short-circuit evaluation?
-		return new Workouts();
+		ArrayList<Workout> workoutsByMuscle = new ArrayList<Workout>();
+		for (int i = 0; i < workoutList.size(); i++) {
+			/*if (includes it in primary || includes it in secondary) {
+				add to list } */
+		}
+		
+		Workouts WorkoutsByMuscle = new Workouts(); //take in workouts that work 
+		return WorkoutsByMuscle;
 	}
 	
 // This list returns a new Workouts object that contains only the workouts that contain the
 // Equipment value that is provided as an argument.
   public final Workouts getWorkoutsByEquipment(Equipment e)
   {
-	  return new Workouts();
+	  ArrayList<Workout> workoutsByEquipment = new ArrayList<Workout>();
+		for (int i = 0; i < workoutList.size(); i++) {
+			/*if (uses equipment) {
+				add to list } */
+		}
+		
+		Workouts WorkoutsByEquipment = new Workouts(); //take in workout objects that match requirement
+	  return WorkoutsByEquipment;
   }
 	
   // This returns a new Workouts object that contains only the workouts that contain an Equipment
@@ -138,4 +148,5 @@ public class Workouts {
 	  ArrayList al = new ArrayList();
 	  return al;
   }
+  
 }

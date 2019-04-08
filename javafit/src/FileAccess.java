@@ -1,5 +1,7 @@
+import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Paths;
 
@@ -11,21 +13,54 @@ public class FileAccess {
    // What is an exception?
   public static Workouts loadWorkouts() {
 	  
+	  String csvFile = "workouts.csv";
+	  BufferedReader br = null;
+	  String line = "";
+	  String csvSplitBy=",";
+	  
 	  try {
-		  FileInputStream fis = new FileInputStream("workouts.csv");
-		  System.out.println("I loaded the file!");
-		  fis.close();
-	  }
-	  catch (FileNotFoundException e) {
+		  //FileInputStream fis = new FileInputStream("workouts.csv");
+		  //System.out.println(fis);
+		  //fis.close();
+		  
+		  br = new BufferedReader(new FileReader(csvFile));
+		  while ((line = br.readLine()) != null) {
+			  String[] workoutString = line.split(csvSplitBy);
+			  
+			  String name = workoutString[0]; 
+			  Workouts.Equipment equipment = Workouts.Equipment.valueOf(workoutString[1]); 
+			  Workouts.Muscle primaryMuscle = Workouts.Muscle.valueOf(workoutString[2]);
+			  Workouts.Muscle secondaryMuscle = Workouts.Muscle.valueOf(workoutString[3]); 
+			  String desc = workoutString[4];
+			  String reminders = workoutString[5];
+			  
+			  Workouts loadedWorkouts = new Workouts(); //define constructor
+			  //Workouts.addWorkout(name, equipment, primaryMuscle, secondaryMuscle, desc, reminders); 
+		  }
+		  
+		  
+		  
+		  
+	  } catch (FileNotFoundException e) {
 		  System.out.println(e);
 		  e.printStackTrace();
 	  } catch (IOException e) {
 		// TODO Auto-generated catch block
 		System.out.println(e);
 		e.printStackTrace();
-	}
+	  } finally {
+		  if (br != null) {
+			  try {
+				  br.close();
+			  } catch (IOException e) {
+				  e.printStackTrace();
+			  }
+		  }
+	  }
 	 
 	  return new Workouts();
   }
+  
+  
 
 }
