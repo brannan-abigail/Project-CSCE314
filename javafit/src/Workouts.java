@@ -76,24 +76,28 @@ public class Workouts {
 // Equipment value that is provided as an argument.
   public final Workouts getWorkoutsByEquipment(Equipment e)
   {
-	  ArrayList<Workout> workoutsByEquipment = new ArrayList<Workout>();
-		for (int i = 0; i < workoutList.size(); i++) {
-			/*if (uses equipment) {
-				add to list } */
-		}
-		
-		Workouts WorkoutsByEquipment = new Workouts(); //take in workout objects that match requirement
-	  return WorkoutsByEquipment;
+	  Workouts workoutsUsingEquipment = new Workouts();
+	  for (Workout workout: workoutList) {
+			  if (workout.equipment.equals(e)) {
+				  workoutsUsingEquipment.addWorkout(workout);
+			  }
+	  }
+	  return workoutsUsingEquipment;
   }
 	
   // This returns a new Workouts object that contains only the workouts that contain an Equipment
   // value that is in the provided ArrayList of Equipment.
   public final Workouts getWorkoutsByEquipment(ArrayList<Equipment> e)
   {
+	  Workouts workoutsUsingEquipment = new Workouts();
 	  for (Workout workout: workoutList) {
-		  
+		  for (Equipment equipment: e) {
+			  if (workout.equipment.equals(equipment)) {
+				  workoutsUsingEquipment.addWorkout(workout);
+			  }
+		  }
 	  }
-	  return new Workouts();
+	  return workoutsUsingEquipment;
   }
 	
   // This method returns an ArrayList of Strings. Each String is a name of a workout in our Workouts list.
@@ -125,15 +129,5 @@ public class Workouts {
 		  allInfo.add(workoutInfo);
 	  }
 	  return allInfo;
-  }
-  
-  private ArrayList<Workout> searchByEquipment(Equipment e) {
-	  ArrayList <Workout> workoutsUsingEquipment = new ArrayList<Workout>();
-	  for (Workout workout: workoutList) {
-			  if (workout.equipment.equals(e)) {
-				  workoutsUsingEquipment.add(workout);
-			  }
-		  }
-	  return workoutsUsingEquipment;
   }
 }
