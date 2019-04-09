@@ -13,16 +13,13 @@ public class FileAccess {
    // What is an exception?
   public static Workouts loadWorkouts() {
 	  
+	  Workouts loadedWorkouts = new Workouts();
 	  String csvFile = "workouts.csv";
 	  BufferedReader br = null;
 	  String line = "";
 	  String csvSplitBy=",";
 	  
 	  try {
-		  //FileInputStream fis = new FileInputStream("workouts.csv");
-		  //System.out.println(fis);
-		  //fis.close();
-		  
 		  br = new BufferedReader(new FileReader(csvFile));
 		  while ((line = br.readLine()) != null) {
 			  String[] workoutString = line.split(csvSplitBy);
@@ -34,13 +31,8 @@ public class FileAccess {
 			  String desc = workoutString[4];
 			  String reminders = workoutString[5];
 			  
-			  Workouts loadedWorkouts = new Workouts(); //define constructor
-			  //Workouts.addWorkout(name, equipment, primaryMuscle, secondaryMuscle, desc, reminders); 
+			  loadedWorkouts.addWorkout(name, equipment, primaryMuscle, secondaryMuscle, desc, reminders);
 		  }
-		  
-		  
-		  
-		  
 	  } catch (FileNotFoundException e) {
 		  System.out.println(e);
 		  e.printStackTrace();
@@ -58,9 +50,6 @@ public class FileAccess {
 		  }
 	  }
 	 
-	  return new Workouts();
+	  return loadedWorkouts;
   }
-  
-  
-
 }

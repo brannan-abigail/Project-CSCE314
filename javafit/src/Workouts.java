@@ -15,7 +15,6 @@ public class Workouts {
   public enum Equipment {BARBELL, BODYWEIGHT, DUMBBELL, CABLE, HAMMERSTRENGTH}
 	private final ArrayList<Workout> workoutList = new ArrayList<Workout>();
 	
-	
 	// This is a nested class, also known as an inner class. Why do we use a nested class?
 	// You will need to create a number of methods for the inner class. You are not limited to 
 	// only the methods listed inside this class.
@@ -35,53 +34,10 @@ public class Workouts {
     	this.desc = desc;
     	this.reminders = reminders;
     }
-		
-    String getName() {
-    	return name;
-    }
-      
-    //Enumeration -> Modify?
-    Equipment getEquipment() {
-    	return equipment;
-    }
-    
-    //Enumeration -> Modify?
-    public void setStringToEquipment(String equipmentString) {
-    	this.equipment = equipment.valueOf(equipmentString);
-    }
-    
-    //Enumeration -> Modify?
-    Muscle getPrimaryMuscle() {
-    	return primaryMuscle;
-    }
-    
-    //Enumeration -> Modify?
-    void setPrimaryMuscle(Muscle primaryMuscle) {
-    	this.primaryMuscle = primaryMuscle;
-    }
-    
-    //Enumeration -> Modify?
-    Muscle getSecondaryMuscle() { 
-    	return secondaryMuscle;
-    }
-    
-    //Enumeration -> Modify?
-    void setSecondaryMuscle(Muscle secondaryMuscle) { 
-    	this.secondaryMuscle = secondaryMuscle;
-    }
-    
-    String getDesc() {
-    	return desc;
-    }
-   
-   String getReminders() {
-	   return reminders;
-   }
-    
     // How do we get the name of an enumeration value?
 	}
-	
-  // This function adds a new workout to the Workouts object.
+
+// This function adds a new workout to the Workouts object.
   public final void addWorkout(String name, Equipment equipment, Muscle primaryMuscle, Muscle secondaryMuscle, String desc, String reminders)
   {
 	 Workout newWorkout = new Workout(name, equipment, primaryMuscle, secondaryMuscle, desc,  reminders);
@@ -101,13 +57,8 @@ public class Workouts {
 	public final Workouts getWorkoutsByMuscle(Muscle m, boolean includeSecondary)
 	{
 	  // What is short-circuit evaluation?
-		ArrayList<Workout> workoutsByMuscle = new ArrayList<Workout>();
-		for (int i = 0; i < workoutList.size(); i++) {
-			/*if (includes it in primary || includes it in secondary) {
-				add to list } */
-		}
-		
-		Workouts WorkoutsByMuscle = new Workouts(); //take in workouts that work 
+		ArrayList<Workout> workoutsByMuscle = searchByMuscle(m, includeSecondary);
+		Workouts WorkoutsByMuscle = new Workouts(); //Send to workoutsByMuscle
 		return WorkoutsByMuscle;
 	}
 	
@@ -135,8 +86,11 @@ public class Workouts {
   // This method returns an ArrayList of Strings. Each String is a name of a workout in our Workouts list.
   public final ArrayList<String> getNames()
   {
-	  ArrayList al = new ArrayList();
-	  return al;
+	  ArrayList<String> workoutsNames = new ArrayList<String>();
+	  for (Workout workout: workoutList) {
+		  workoutsNames.add(workout.name);
+	  }
+	  return workoutsNames;
 	  
   }
  
@@ -145,8 +99,43 @@ public class Workouts {
   // Equipment, Primary and Secondary Muscles, Description, and Reminders. All of these should be strings.
   public final ArrayList<String[]> getFullInformation()
   {
-	  ArrayList al = new ArrayList();
-	  return al;
+	  ArrayList<String[]> allInfo = new ArrayList<String[]>();
+	  for (Workout workout: workoutList) {
+		  String[] workoutInfo = new String[6];
+		  workoutInfo[0] = workout.name;
+		  workoutInfo[1] = workout.equipment.toString();
+		  workoutInfo[2] = workout.primaryMuscle.toString();
+		  workoutInfo[3] = workout.secondaryMuscle.toString();
+		  workoutInfo[4] = workout.desc;
+		  workoutInfo[5] = workout.reminders;
+		  
+		  allInfo.add(workoutInfo);
+	  }
+	  return allInfo;
   }
   
+  private ArrayList<Workout> searchByEquipment(Equipment e) {
+	  ArrayList <Workout> workoutsUsingEquipment = new ArrayList<Workout>();
+	  for (Workout workout: workoutList) {
+		  //if equipment given equals workout.equipment
+		  	//add it to the list
+	  }
+	  return workoutsUsingEquipment;
+  }
+  
+  
+  private ArrayList<Workout> searchByMuscle(Muscle muscleSearchingFor, boolean includeSecondary) {
+	  ArrayList <Workout> workoutsUsingMuscles = new ArrayList<Workout>();
+	  for (Workout workout: workoutList) {
+		  if (workout.primaryMuscle.equals(muscleSearchingFor)) {
+			  workoutsUsingMuscles.add(workout);
+		  }
+		  if (includeSecondary) {
+			  if (workout.secondaryMuscle.equals(muscleSearchingFor)) {
+				  workoutsUsingMuscles.add(workout);
+			  }
+		  }
+	  }
+	  return workoutsUsingMuscles;
+  }
 }
