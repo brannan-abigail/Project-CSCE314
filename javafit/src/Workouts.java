@@ -57,9 +57,19 @@ public class Workouts {
 	public final Workouts getWorkoutsByMuscle(Muscle m, boolean includeSecondary)
 	{
 	  // What is short-circuit evaluation?
-		ArrayList<Workout> workoutsByMuscle = searchByMuscle(m, includeSecondary);
-		Workouts WorkoutsByMuscle = new Workouts(); //Send to workoutsByMuscle
-		return WorkoutsByMuscle;
+		Workouts workoutsUsingMuscles = new Workouts();
+		  for (Workout workout: workoutList) {
+			  if (workout.primaryMuscle.equals(m)) {
+				  workoutsUsingMuscles.addWorkout(workout);
+			  } else {
+				  if (includeSecondary) {
+					  if (workout.secondaryMuscle.equals(m)) {
+						  workoutsUsingMuscles.addWorkout(workout);
+					  }
+				  }
+			  }
+		  }
+		return workoutsUsingMuscles;
 	}
 	
 // This list returns a new Workouts object that contains only the workouts that contain the
@@ -125,21 +135,5 @@ public class Workouts {
 			  }
 		  }
 	  return workoutsUsingEquipment;
-  }
-  
- 
-  private ArrayList<Workout> searchByMuscle(Muscle muscleSearchingFor, boolean includeSecondary) {
-	  ArrayList <Workout> workoutsUsingMuscles = new ArrayList<Workout>();
-	  for (Workout workout: workoutList) {
-		  if (workout.primaryMuscle.equals(muscleSearchingFor)) {
-			  workoutsUsingMuscles.add(workout);
-		  }
-		  if (includeSecondary) {
-			  if (workout.secondaryMuscle.equals(muscleSearchingFor)) {
-				  workoutsUsingMuscles.add(workout);
-			  }
-		  }
-	  }
-	  return workoutsUsingMuscles;
   }
 }
