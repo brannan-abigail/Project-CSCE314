@@ -80,6 +80,9 @@ public class Workouts {
   // value that is in the provided ArrayList of Equipment.
   public final Workouts getWorkoutsByEquipment(ArrayList<Equipment> e)
   {
+	  for (Workout workout: workoutList) {
+		  
+	  }
 	  return new Workouts();
   }
 	
@@ -117,13 +120,14 @@ public class Workouts {
   private ArrayList<Workout> searchByEquipment(Equipment e) {
 	  ArrayList <Workout> workoutsUsingEquipment = new ArrayList<Workout>();
 	  for (Workout workout: workoutList) {
-		  //if equipment given equals workout.equipment
-		  	//add it to the list
-	  }
+			  if (workout.equipment.equals(e)) {
+				  workoutsUsingEquipment.add(workout);
+			  }
+		  }
 	  return workoutsUsingEquipment;
   }
   
-  
+ 
   private ArrayList<Workout> searchByMuscle(Muscle muscleSearchingFor, boolean includeSecondary) {
 	  ArrayList <Workout> workoutsUsingMuscles = new ArrayList<Workout>();
 	  for (Workout workout: workoutList) {
