@@ -60,9 +60,17 @@ public class Workouts {
 	{
 	  // What is short-circuit evaluation?
 		Workouts workoutsUsingMuscles = new Workouts();
+		
 		  for (Workout workout: workoutList) {
-			  if (workout.primaryMuscle.equals(m) || workout.secondaryMuscle.equals(m)) {
-				  workoutsUsingMuscles.addWorkout(workout);
+			  if (includeSecondary) {
+				  if (workout.primaryMuscle.equals(m) || workout.secondaryMuscle.equals(m)) {
+					  workoutsUsingMuscles.addWorkout(workout);
+				  }
+			  } 
+			  else {
+				  if (workout.primaryMuscle.equals(m)) {
+					  workoutsUsingMuscles.addWorkout(workout);
+				  }
 			  }
 		  }
 		return workoutsUsingMuscles;
@@ -115,6 +123,7 @@ public class Workouts {
 	  ArrayList<String[]> allInfo = new ArrayList<String[]>();
 	  for (Workout workout: workoutList) {
 		  String[] workoutInfo = new String[6];
+		  
 		  workoutInfo[0] = workout.name;
 		  workoutInfo[1] = workout.equipment.toString();
 		  workoutInfo[2] = workout.primaryMuscle.toString();
@@ -126,8 +135,5 @@ public class Workouts {
 	  }
 	  return allInfo;
   }
-  
-  public ArrayList<Workout> getWorkoutList() {
-	  return workoutList;
-  }
+
 }
