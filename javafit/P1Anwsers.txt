@@ -2,7 +2,7 @@ FileAccess.java Questions:
 
 	What is a try/catch block and why do we need one?
 
-	A try/catch block is a block of code for handling things that could go wrong in your code, but should not cause your entire program to crash. It has a portion called the "try block" that is for trying things that could fail, and the "catch block" for what the program should do if the attempt fails. An example of this would be in having the try section attempt to connect to a database, and the catch section report to the user if the connection could not be made. 
+	A try/catch block is a block of code for handling things that could go wrong in your code, but should not cause your entire program to crash. It has a portion called the "try block" that is for trying things that could fail, and the "catch block" for what the program should do if the attempt fails. An example of this would be in having the try section attempt to connect to a database, and the catch section report to the user if the connection could not be made. There's also an optional "finally block", which allows the programmer to add things that should happen regardless of the errors.
 
 	What is an exception?
 
@@ -24,10 +24,8 @@ Workouts.java Questions:
 
 	How do we get the name of an enumeration value?
 
-	An accessor is needed to get the name of an enumeration value with the enumeration object passed in.
+	We use the .valueOf() method of the enumeration, which uses the member method of the enumeration type.
 
 	What is short-circuit evaluation?
 
 	Short-circuit evaluation refers to how the semantics in some programming languages handle multiple arguments, in which the arguments after the first one are only checked if the first one did not work. So in Java for booleans like AND and OR, if the first condition isn't met, it won't check the second one. 
-
-Test 2
