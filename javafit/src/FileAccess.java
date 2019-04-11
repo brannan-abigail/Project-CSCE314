@@ -8,7 +8,6 @@ import java.nio.file.Paths;
 // Write code to load the workouts from the provided workouts.csv file. The function should return a Workouts object.
 
 public class FileAccess {
-  
 	// What is a try/catch block and why do we need one?
    // What is an exception?
   public static Workouts loadWorkouts() {
@@ -33,19 +32,18 @@ public class FileAccess {
 			  
 			  loadedWorkouts.addWorkout(name, equipment, primaryMuscle, secondaryMuscle, desc, reminders);
 		  }
-	  } catch (FileNotFoundException e) {
-		  System.out.println(e);
-		  e.printStackTrace();
-	  } catch (IOException e) {
-		// TODO Auto-generated catch block
-		System.out.println(e);
-		e.printStackTrace();
+	  } catch (FileNotFoundException fileNotFoundEx) {
+		  System.out.println(fileNotFoundEx);
+		  fileNotFoundEx.printStackTrace();
+	  } catch (IOException ioException) {
+		System.out.println(ioException);
+		ioException.printStackTrace();
 	  } finally {
 		  if (br != null) {
 			  try {
 				  br.close();
-			  } catch (IOException e) {
-				  e.printStackTrace();
+			  } catch (IOException ioException) {
+				  ioException.printStackTrace();
 			  }
 		  }
 	  }

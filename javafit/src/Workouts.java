@@ -1,4 +1,6 @@
 import java.util.ArrayList; // We choose ArrayList over Vector because...? 
+import static org.junit.Assert.*;
+import org.junit.Test;
 /**
 * Use the provided enumerations and code framework to create our workouts class.
 * This class should contain all the functionality we need to interact with our workout list.
@@ -59,14 +61,8 @@ public class Workouts {
 	  // What is short-circuit evaluation?
 		Workouts workoutsUsingMuscles = new Workouts();
 		  for (Workout workout: workoutList) {
-			  if (workout.primaryMuscle.equals(m)) {
+			  if (workout.primaryMuscle.equals(m) || workout.secondaryMuscle.equals(m)) {
 				  workoutsUsingMuscles.addWorkout(workout);
-			  } else {
-				  if (includeSecondary) {
-					  if (workout.secondaryMuscle.equals(m)) {
-						  workoutsUsingMuscles.addWorkout(workout);
-					  }
-				  }
 			  }
 		  }
 		return workoutsUsingMuscles;
@@ -129,5 +125,9 @@ public class Workouts {
 		  allInfo.add(workoutInfo);
 	  }
 	  return allInfo;
+  }
+  
+  public ArrayList<Workout> getWorkoutList() {
+	  return workoutList;
   }
 }
