@@ -1,6 +1,5 @@
 import java.util.ArrayList; // We choose ArrayList over Vector because...? 
-import static org.junit.Assert.*;
-import org.junit.Test;
+
 /**
 * Use the provided enumerations and code framework to create our workouts class.
 * This class should contain all the functionality we need to interact with our workout list.
