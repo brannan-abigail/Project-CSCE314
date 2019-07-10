@@ -22,11 +22,7 @@ public class javaFit {
     EnumMap<Config.MuscleGroup, ArrayList<Config.Muscle>> muscleGroups = FileAccess.loadFormats();
 	  
 	  // Create Screen Handler
-	  MainWindow mainScreen = new MainWindow(workouts, muscleGroups);
-	  
-	  
-
-
+    MainWindow mainScreen = new MainWindow(workouts, muscleGroups);
 	}
 
 }
